@@ -6,13 +6,10 @@ function getComputerChoice () {
     // random number between 1 and 3
     const rand = Math.floor(Math.random() * (4 - 1) + 1);
     if (rand > 2) {
-        console.log("Computer chooses: rock");
         return "rock";
     } else if (rand === 2) {
-        console.log("Computer chooses: paper");
         return "paper";
     } else {
-        console.log("I choose: scissors");
         return "scissors";
     }
 }
@@ -21,7 +18,7 @@ function getComputerChoice () {
 
 function getHumanChoice () {
     const humanChoice = prompt("Please choose: Rock, Paper or Scissors");
-    console.log(`You Chose: ${humanChoice}`);
+    //console.log(`You Chose: ${humanChoice}`);
     return humanChoice;
 }
 
@@ -37,31 +34,37 @@ function playRound(humanChoice, computerChoice) {
     // force all lower case answers
     const hc = humanChoice.toLowerCase();
     const cc = computerChoice.toLowerCase();
-    if (hc === "rock" && cc === "scissors") {
-        console.log("You win!")
+    if (hc === "rock" && cc === "scissors") { // human wins
+        console.log("Computer chooses Scissors - You win!")
         humanScore++;
     } else if (hc === "scissors" && cc === "paper") {
-        console.log("You win!")
+        console.log("Computer chooses Paper - You win!")
         humanScore++;
     } else if (hc === "paper" && cc === "rock") {
-        console.log("You win!")
-        humanScore++; //computer wins
-    } else if (hc === "scissors" && cc === "rock") {
-        console.log("I win!")
+        console.log("Computer chooses Rock - You win!")
+        humanScore++; 
+    } else if (hc === "scissors" && cc === "rock") { //computer wins
+        console.log("Computer chooses Rock - Computer wins!")
         computerScore++;
     } else if (hc === "paper" && cc === "scissors") {
-        console.log("I win!")
+        console.log("Computer chooses Scissors - Computer wins!")
         computerScore++;
     } else if (hc === "rock" && cc === "paper") {
-        console.log("I win!")
+        console.log("Computer chooses Paper - Computer wins!")
         computerScore++;
+    } else if (hc === "rock" && cc === "rock") { // its a tie
+        console.log("It's a tie - choose again!");
+    } else if (hc === "paper" && cc === "paper") {
+        console.log("It's a tie - choose again!");
+    } else if (hc === "scissors" && cc === "scissors") {
+        console.log("It's a tie - choose again!");
     }
+    console.log(`human: ${hc} computer: ${cc} `)
     console.log(`The Score is - Computer: ${computerScore} Human: ${humanScore}`)
     return;
 }
 
-const humanSelection = getComputerChoice();
-const computerSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+const humanSelection = getHumanChoice();
 
 playRound(humanSelection, computerSelection);
-
