@@ -58,9 +58,8 @@ function playRound(humanChoice, computerChoice) {
     } else if (hc === "scissors" && cc === "scissors") {
         console.log("It's a tie - choose again!");
     }
-    console.log(`Human Chose: ${hc} Computer Chose: ${cc} `)
-    console.log(`The Score is - Computer: ${computerScore} Human: ${humanScore}`)
-    return;
+    return console.log(`Human Chose: ${hc} || Computer Chose: ${cc} \n
+    The Score is - Computer: ${computerScore} Human: ${humanScore}`);
 }
 
 
@@ -72,7 +71,7 @@ function playGame () {
         playRound(humanSelection, computerSelection);
     }
     
-    return console.log(`Final score: Computer ${computerScore} Player: ${humanScore}`);
+    return console.log(`Final score: Computer: ${computerScore} -- Player: ${humanScore}`);
 }
 
 
