@@ -23,7 +23,7 @@ function getHumanChoice () {
 }
 
 // play single round //
-// rock beats scissors, scissors beats paper, paper beats rock
+// GAME RULES: rock beats scissors, scissors beats paper, paper beats rock
 
  // declare score variables
  let humanScore = 0;
@@ -62,6 +62,7 @@ function playRound(humanChoice, computerChoice) {
     The Score is - Computer: ${computerScore} Human: ${humanScore}`);
 }
 
+// Play full 5-round game
 
 function playGame () {
     for (let i = 0; i < 5; i++) {
@@ -74,5 +75,6 @@ function playGame () {
     return console.log(`Final score: Computer: ${computerScore} -- Player: ${humanScore}`);
 }
 
+// main game loop
 
 playGame();
