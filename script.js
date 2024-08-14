@@ -22,13 +22,12 @@ function getHumanChoice () {
     return humanChoice;
 }
 
-// declare score variables
-
-let humanScore = 0;
-let computerScore = 0;
-
 // play single round //
 // rock beats scissors, scissors beats paper, paper beats rock
+
+ // declare score variables
+ let humanScore = 0;
+ let computerScore = 0;
 
 function playRound(humanChoice, computerChoice) {
     // force all lower case answers
@@ -59,12 +58,22 @@ function playRound(humanChoice, computerChoice) {
     } else if (hc === "scissors" && cc === "scissors") {
         console.log("It's a tie - choose again!");
     }
-    console.log(`human: ${hc} computer: ${cc} `)
+    console.log(`Human Chose: ${hc} Computer Chose: ${cc} `)
     console.log(`The Score is - Computer: ${computerScore} Human: ${humanScore}`)
     return;
 }
 
-const computerSelection = getComputerChoice();
-const humanSelection = getHumanChoice();
 
-playRound(humanSelection, computerSelection);
+function playGame () {
+    for (let i = 0; i < 5; i++) {
+        const computerSelection = getComputerChoice();
+        const humanSelection = getHumanChoice();
+        console.log(`Round: ${i + 1}`);
+        playRound(humanSelection, computerSelection);
+    }
+    
+    return console.log(`Final score: Computer ${computerScore} Player: ${humanScore}`);
+}
+
+
+playGame();
