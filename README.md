@@ -43,8 +43,9 @@ button for R/P/S player choice - run playRound when button selected
 
 choice div and results div are hidden on launch >>> change display then add .card class for styling
 
->>> logic changes
-
-
+// >>> TO DO <<< //
+round and score DOM elements
+reset game button 
+further styling
 
 git branching and merging practice --

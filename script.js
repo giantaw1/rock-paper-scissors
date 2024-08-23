@@ -23,8 +23,8 @@ function getComputerChoice () {
 
 function playRound(humanChoice, computerChoice) {
     // force all lower case answers
-    const hc = humanChoice.toLowerCase();
-    const cc = computerChoice.toLowerCase();
+    const hc = humanChoice;
+    const cc = computerChoice;
     if (hc === "rock" && cc === "scissors") { // human wins
         console.log("Computer chooses Scissors - You win!")
         humanScore++;
