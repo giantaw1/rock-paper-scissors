@@ -14,20 +14,11 @@ function getComputerChoice () {
     }
 }
 
-// get human choice from button //
-
-function getHumanChoice () {
-    const humanChoice = prompt("Please choose: Rock, Paper or Scissors");
-    //console.log(`You Chose: ${humanChoice}`);
-    return humanChoice;
-}
-
-
 // RPS-UI update - grab variables from buttons
 
-const rock = document.getElementById('rock');
-const paper = document.getElementById('paper');
-const scissors = document.getElementById('scissors');
+const rockBtn = document.getElementById('rock');
+const paperBtn = document.getElementById('paper');
+const scissorsBtn = document.getElementById('scissors');
 
 
 // play single round //
@@ -70,19 +61,17 @@ function playRound(humanChoice, computerChoice) {
     The Score is - Computer: ${computerScore} Human: ${humanScore}`);
 }
 
-// Play full 5-round game
+// Play auto 5-round game
 
-function playGame () {
-    /*for (let i = 0; i < 5; i++) {
-        const computerSelection = getComputerChoice();
-        const humanSelection = getHumanChoice();
-        console.log(`Round: ${i + 1}`);
-        playRound(humanSelection, computerSelection);
-    }*/
+// function playGame () {
+//     for (let i = 0; i < 5; i++) {
+//         const computerSelection = getComputerChoice();
+//         const humanSelection = getHumanChoice();
+//         console.log(`Round: ${i + 1}`);
+//         playRound(humanSelection, computerSelection);
+//     }
     
-    return console.log(`Final score: Computer: ${computerScore} -- Player: ${humanScore}`);
-}
+//     return console.log(`Final score: Computer: ${computerScore} -- Player: ${humanScore}`);
+// }
 
-// main game loop
-
-playGame();
+// playGame();
