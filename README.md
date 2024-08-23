@@ -31,9 +31,14 @@ click button for player choice, rather than typing
 
 add way to repeat rounds on tie - first to 5 points
 
-// RPS-UI //
+// RPS-UI UPDATE //
 
-branch created 8/23
+branch created 8/23 - add ui elements to rps game.
 
-add ui elements to rps game.
+button for R/P/S player choice - run playRound when button selected
 
+>>> display choice, running score, current round (DOM methods instead of console msgs)
+
+>>> announce winner after 5 points scored rather than 5 rounds total
+
+git branching and merging practice --
