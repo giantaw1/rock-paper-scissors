@@ -1,6 +1,6 @@
 * {
     margin: 0px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #main-header {
@@ -15,7 +15,6 @@
     padding: 10px;
 }
 
-
 .card {
     width: 50vw;
     padding: 20px;
@@ -26,7 +25,13 @@
     justify-content: space-around;
 }
 
+#player-choice {
+    display: none;
+}
 
+#results {
+    display: none;
+}
 
 .btn {
     background-color: black;

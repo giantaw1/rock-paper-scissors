@@ -14,13 +14,21 @@ function getComputerChoice () {
     }
 }
 
-// get human choice from prompt //
+// get human choice from button //
 
 function getHumanChoice () {
     const humanChoice = prompt("Please choose: Rock, Paper or Scissors");
     //console.log(`You Chose: ${humanChoice}`);
     return humanChoice;
 }
+
+
+// RPS-UI update - grab variables from buttons
+
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const scissors = document.getElementById('scissors');
+
 
 // play single round //
 // GAME RULES: rock beats scissors, scissors beats paper, paper beats rock
