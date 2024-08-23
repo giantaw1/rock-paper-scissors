@@ -14,13 +14,6 @@ function getComputerChoice () {
     }
 }
 
-// RPS-UI update - grab variables from buttons
-
-const rockBtn = document.getElementById('rock');
-const paperBtn = document.getElementById('paper');
-const scissorsBtn = document.getElementById('scissors');
-
-
 // play single round //
 // GAME RULES: rock beats scissors, scissors beats paper, paper beats rock
 
@@ -60,6 +53,36 @@ function playRound(humanChoice, computerChoice) {
     return console.log(`Human Chose: ${hc} || Computer Chose: ${cc} \n
     The Score is - Computer: ${computerScore} Human: ${humanScore}`);
 }
+
+
+// RPS-UI update - grab variables from buttons
+
+const rockBtn = document.getElementById('rock');
+const paperBtn = document.getElementById('paper');
+const scissorsBtn = document.getElementById('scissors');
+
+
+// play round with player choice from button clicks
+
+function playGameBtn(playerChoice) {
+    const humanSelection = playerChoice;
+    const computerSelection = getComputerChoice()
+    playRound(humanSelection, computerSelection);
+}
+
+rockBtn.addEventListener('click', e => {
+    playGameBtn('rock');
+});
+
+paperBtn.addEventListener('click', e => {
+    playGameBtn('paper');
+} );
+
+scissorsBtn.addEventListener('click', e => {
+    playGameBtn('scissors');
+});
+
+
 
 // Play auto 5-round game
 
