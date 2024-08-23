@@ -65,12 +65,12 @@ function playRound(humanChoice, computerChoice) {
 // Play full 5-round game
 
 function playGame () {
-    for (let i = 0; i < 5; i++) {
+    /*for (let i = 0; i < 5; i++) {
         const computerSelection = getComputerChoice();
         const humanSelection = getHumanChoice();
         console.log(`Round: ${i + 1}`);
         playRound(humanSelection, computerSelection);
-    }
+    }*/
     
     return console.log(`Final score: Computer: ${computerScore} -- Player: ${humanScore}`);
 }

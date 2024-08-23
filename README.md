@@ -30,3 +30,10 @@ spelling protection
 click button for player choice, rather than typing
 
 add way to repeat rounds on tie - first to 5 points
+
+// RPS-UI //
+
+branch created 8/23
+
+add ui elements to rps game.
+
