@@ -33,6 +33,10 @@ body {
     display: none;
 }
 
+#current-round {
+    display: none;
+}
+
 #results {
     display: none;
 }

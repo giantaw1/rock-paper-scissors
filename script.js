@@ -1,7 +1,6 @@
 // Rock Paper Scissors game //
 
 // get computer choice//
-
 function getComputerChoice () {
     // random number between 1 and 3
     const rand = Math.floor(Math.random() * (4 - 1) + 1);
@@ -17,41 +16,51 @@ function getComputerChoice () {
 // play single round //
 // GAME RULES: rock beats scissors, scissors beats paper, paper beats rock
 
- // declare score variables
+ // initalize score and round variables
  let humanScore = 0;
  let computerScore = 0;
+ let round = 1;
 
 function playRound(humanChoice, computerChoice) {
-    // force all lower case answers
     const hc = humanChoice;
     const cc = computerChoice;
+    const roundWinner = '';
     if (hc === "rock" && cc === "scissors") { // human wins
-        console.log("Computer chooses Scissors - You win!")
+        roundWinner = "Computer chooses Scissors - You win!";
         humanScore++;
+        round++;
     } else if (hc === "scissors" && cc === "paper") {
-        console.log("Computer chooses Paper - You win!")
+        roundWinner = "Computer chooses Paper - You win!";
         humanScore++;
+        round++;
     } else if (hc === "paper" && cc === "rock") {
-        console.log("Computer chooses Rock - You win!")
+        roundWinner = "Computer chooses Rock - You win!";
         humanScore++; 
+        round++;
     } else if (hc === "scissors" && cc === "rock") { //computer wins
-        console.log("Computer chooses Rock - Computer wins!")
+        roundWinner = "Computer chooses Rock - Computer wins!";
         computerScore++;
+        round++;
     } else if (hc === "paper" && cc === "scissors") {
-        console.log("Computer chooses Scissors - Computer wins!")
+        roundWinner = "Computer chooses Scissors - Computer wins!";
         computerScore++;
+        round++;
     } else if (hc === "rock" && cc === "paper") {
-        console.log("Computer chooses Paper - Computer wins!")
+        roundWinner = "Computer chooses Paper - Computer wins!";
         computerScore++;
+        round++;
     } else if (hc === "rock" && cc === "rock") { // its a tie
-        console.log("It's a tie - choose again!");
+        roundWinner = "It's a tie - choose again!";
+        round++;
     } else if (hc === "paper" && cc === "paper") {
-        console.log("It's a tie - choose again!");
+        roundWinner = "It's a tie - choose again!";
+        round++;
     } else if (hc === "scissors" && cc === "scissors") {
-        console.log("It's a tie - choose again!");
+        roundWinner = "It's a tie - choose again!";
+        round++;
     }
-    return console.log(`Human Chose: ${hc} || Computer Chose: ${cc} \n
-    The Score is - Computer: ${computerScore} Human: ${humanScore}`);
+    // return console.log(`Human Chose: ${hc} || Computer Chose: ${cc} \n
+    // The Score is - Computer: ${computerScore} Human: ${humanScore}`);
 }
 
 
@@ -61,6 +70,7 @@ const rockBtn = document.getElementById('rock');
 const paperBtn = document.getElementById('paper');
 const scissorsBtn = document.getElementById('scissors');
 
+const currentRound = document.getElementById('current-score');
 
 // play round with player choice from button clicks
 
@@ -68,6 +78,15 @@ function playGameBtn(playerChoice) {
     const humanSelection = playerChoice;
     const computerSelection = getComputerChoice()
     playRound(humanSelection, computerSelection);
+    if (round === 1) {
+        const result = document.createElement('ul');
+        const currentResult = document.createElement('li');
+        currentRound.appendChild(result);
+        result.appendChild(currentResult);
+        currentResult.createTextNode('roundWinner');
+    } else if (round > 1) {
+        currentResult.createTextNode('roundWinner');
+    }
 }
 
 rockBtn.addEventListener('click', e => {
