@@ -45,13 +45,8 @@ choice div and results div are hidden on launch >>> change display then add .car
 
 // >>> TO DO <<< //
 
-round and score DOM elements
-player and computer choice elements
-reset game button 
-further styling - center elements, current round choices and score
+FINAL STYLING - add footer, colors, icons?, layout
 
->>player-choice div = rules, choices and current round -
->>current-score div = current score and round
->>results div = winner & reset button
+WINNER MESSAGE AND RESET/PLAY AGAIN, link to github
 
 git branching and merging practice --
