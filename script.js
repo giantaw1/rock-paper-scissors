@@ -104,7 +104,6 @@ scores.appendChild(currentScoreText);
 
 const finalResults = document.getElementById('final-results');
 
-
 // play round with player choice from button clicks
 
 function playGameBtn(playerChoice) {
@@ -124,6 +123,35 @@ function playGameBtn(playerChoice) {
     
     round++;
 
+    scoreCheck();
+}
+
+// score check and reset functionality
+
+function scoreCheck() {
+    if (humanScore === 5 || computerScore === 5) {
+        const finalScore = document.createElement('p');
+        const finalScoreText = `Final Score is - Computer: ${computerScore} Player: ${humanScore}`;
+        finalScore.appendChild(document.createTextNode(finalScoreText));
+        finalResults.appendChild(finalScore);  
+        round = 0;
+        if (humanScore === 5) {
+            const bigWinner = document.createElement('p');
+            const bigWinnerText = "You won!"
+            bigWinner.appendChild(document.createTextNode(bigWinnerText));
+            finalScore.appendChild(bigWinner);
+            finalResults.style.display = 'block';
+        } else {
+            const bigLoser = document.createElement('p');
+            const bigLoserText = "You won!"
+            bigLoser.appendChild(document.createTextNode(bigLoserText));
+            finalScore.appendChild(bigLoser);
+            finalResults.style.display = 'block'; 
+        }
+    } else {
+        return;
+    }
+    
 }
 
 
