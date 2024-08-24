@@ -29,7 +29,7 @@ body {
     justify-content: space-around;
 }
 
-#player-choice {
+#current-score {
     display: none;
 }
 
@@ -37,7 +37,11 @@ body {
     display: none;
 }
 
-#results {
+#final-results {
+    display: none;
+}
+
+#current-winner {
     display: none;
 }
 
@@ -48,3 +52,6 @@ body {
     border-radius: 4px;
 }
 
+footer {
+    background-color: rgb(46, 46, 61);
+}
