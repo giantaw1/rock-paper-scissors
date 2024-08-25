@@ -11,18 +11,18 @@
         <h1 class="title">Rock Paper Scissors</h1>
     </header>
     <main class="game">
-        <div class="buttons card">
+        <div class="play-buttons card">
             <h2>Choose an option:</h2>
             <button class="btn" id="rock">Play Rock!</button>
             <button class="btn" id="paper">Play Paper!</button>
             <button class="btn" id="scissors">Play Scissors!</button>
         </div>
-        <div class="current-winner">
-            <strong>Round: <span class="round"></span></strong>
-            <strong>Player Score: <span class="score" id="player-score">0</span></strong>
-            <strong>Computer Score: <span class="score" id="computer-score">0</span></strong>
+        <div class="current-round card">
+            <strong>Round: <span class="round" id="round">1 </span></strong>
+            <strong>Player Score: <span class="score" id="player-score">0 </span></strong>
+            <strong>Computer Score: <span class="score" id="computer-score">0 </span></strong>
         </div>
-        <div class="final-results">
+        <div class="results-container card">
             <p id="results-msg"></p>
             <p id="winner-msg"></p>
             <button class="btn" id="reset">Play again?</button>

@@ -1,24 +1,22 @@
-// Rock Paper Scissors game //
-
-// get computer choice//
-function getComputerChoice () {
-    // random number between 1 and 3
-    const options = ["Rock", "Paper", "Scissors"]
-    const rand = Math.floor(Math.random() * options.length);
-    return options[rand];
-}
-
-// CORE GAME LOGIC
-
+// CORE GAME LOGIC //
 // initalize score and round variables
 
 let playerScore = 0;
 let computerScore = 0;
 let round = 1;
 
+// get computer choice
+
+function getComputerChoice() {
+    // random number between 1 and 3
+    const options = ["Rock", "Paper", "Scissors"]
+    const rand = Math.floor(Math.random() * options.length);
+    return options[rand];
+}
+
 // has player won?
 
-function hasPlayerWon (player, computer) {
+function hasPlayerWon(player, computer) {
     return (
         (player === "Rock" && computer === "Scissors") ||
         (player === "Scissors" && computer === "Paper") ||
@@ -32,45 +30,71 @@ function playRound(playerChoice) {
 
     if (hasPlayerWon(playerChoice, computerChoice)) {
         playerScore++;
-        return  `Round: ${round}. Player wins! ${playerChoice} beats ${computerChoice}`; 
+        return  `Player wins!  ${playerChoice} beats ${computerChoice}`; 
     } else if (computerChoice === playerChoice) {
-        return `Round: ${round}. It's a Tie! Both chose ${playerChoice}. Choose again!`;
+        return `It's a Tie!  Both chose ${playerChoice}.  Choose again!`;
     } else {
         computerScore++;
-        return `Round: ${round}. Computer wins! ${computerChoice} beats ${playerChoice}`; 
+        return `Computer wins!  ${computerChoice} beats ${playerChoice}`; 
     };
 }
 
-// play full game - console only
+// play full game - first to 5
 
-function playGame (playerChoice) {
-    console.log(playRound(playerChoice));
-    console.log(`Player score: ${playerScore} Computer Score: ${computerScore}`);
+function playGame(playerChoice) {
+    //create dom elements
+    resultsContainer.style.display = 'block';
+    roundResultsMsg.innerText = playRound(playerChoice);
+    playerScoreSpan.innerText = playerScore;
+    computerScoreSpan.innerText = computerScore;
+    currentRoundSpan.innerText = round;
+   
     round++;
 
     if (playerScore === 5 || computerScore === 5) {
-        console.log(`${playerScore === 5 ? "Player" : "Computer"} has won the game!`)
+        winnerMsg.innerText = `${playerScore === 5 ? "Player" : "Computer"} has won the game!`;
+        resetBtn.style.display = 'block';
+        playButtonsContainer.style.display = 'none';
     }
 }
 
-// reset game after 5
+// reset game after winner determined
 
-function resetGame (){
+function resetGame() {
     playerScore = 0;
     computerScore = 0;
     round = 1;
     // hide/show DOM elements
+    playerScoreSpan.innerText = playerScore;
+    computerScoreSpan.innerText = computerScore;
+    currentRoundSpan.innerText = round;
+    resetBtn.style.display = 'none';
+    playButtonsContainer.style.display = 'flex';
+    resultsContainer.style.display = 'none';
+    roundResultsMsg.innerText = '';
+    winnerMsg.innerText = '';
 }
 
-// RPS-UI update - grab variables from buttons
+// RPS-UI UPDATE //
 
+// initialize button variables
 const rockBtn = document.getElementById('rock');
 const paperBtn = document.getElementById('paper');
 const scissorsBtn = document.getElementById('scissors');
-
 const resetBtn = document.getElementById('reset');
 
+// initialize DOM element variables
+const playerScoreSpan = document.getElementById('player-score');
+const computerScoreSpan = document.getElementById('computer-score');
+const currentRoundSpan = document.getElementById('round');
+const resultsContainer = document.querySelector('.results-container');
+const roundResultsMsg = document.getElementById('results-msg');
+const winnerMsg = document.getElementById('winner-msg');
+const playButtonsContainer = document.querySelector('.play-buttons');
 
+
+
+//  button functionality
 resetBtn.addEventListener ('click', resetGame);
 
 rockBtn.addEventListener('click', e => {
