@@ -29,21 +29,21 @@ body {
     justify-content: space-around;
 }
 
-#current-score {
-    display: none;
+/* #current-score {
+    
 }
 
 #current-round {
-    display: none;
+    
 }
 
 #final-results {
-    display: none;
+    
 }
 
 #current-winner {
-    display: none;
-}
+   
+} */
 
 .btn {
     background-color: black;

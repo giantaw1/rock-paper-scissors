@@ -3,76 +3,63 @@
 // get computer choice//
 function getComputerChoice () {
     // random number between 1 and 3
-    const rand = Math.floor(Math.random() * (4 - 1) + 1);
-    if (rand > 2) {
-        return "rock";
-    } else if (rand === 2) {
-        return "paper";
-    } else {
-        return "scissors";
-    }
+    const options = ["Rock", "Paper", "Scissors"]
+    const rand = Math.floor(Math.random() * options.length);
+    return options[rand];
 }
 
-// play single round //
 // CORE GAME LOGIC
 
- // initalize score and round variables
+// initalize score and round variables
 
-let humanScore = 0;
+let playerScore = 0;
 let computerScore = 0;
 let round = 1;
 
-let roundResultsText = '';
-let roundWinnerText = '';
-let scoreResultsText = '';
+// has player won?
 
-function playRound(humanChoice, computerChoice) {
-    const hc = humanChoice;
-    const cc = computerChoice;
-    
-    if (hc === "rock" && cc === "scissors") { // human wins
-        roundResultsText = `Player Chose: ${hc} || Computer Chose: ${cc}`;
-        roundWinnerText = "Computer chooses Scissors - You win!";
-        humanScore++;
-       
-    } else if (hc === "scissors" && cc === "paper") {
-        roundResultsText = `Player Chose: ${hc} || Computer Chose: ${cc}`;
-        roundWinnerText = "Computer chooses Paper - You win!";
-        humanScore++;
-        
-    } else if (hc === "paper" && cc === "rock") {
-        roundResultsText = `Player Chose: ${hc} || Computer Chose: ${cc}`;
-        roundWinnerText = "Computer chooses Rock - You win!";
-        humanScore++; 
-        
-    } else if (hc === "scissors" && cc === "rock") { //computer wins
-        roundResultsText = `Player Chose: ${hc} || Computer Chose: ${cc}`;
-        roundWinnerText = "Computer chooses Rock - Computer wins!";
+function hasPlayerWon (player, computer) {
+    return (
+        (player === "Rock" && computer === "Scissors") ||
+        (player === "Scissors" && computer === "Paper") ||
+        (player === "Paper" && computer === "rock")
+    );
+}
+// play a round
+
+function playRound(playerChoice) {
+    const computerChoice = getComputerChoice();
+
+    if (hasPlayerWon(playerChoice, computerChoice)) {
+        playerScore++;
+        return  `Round: ${round}. Player wins! ${playerChoice} beats ${computerChoice}`; 
+    } else if (computerChoice === playerChoice) {
+        return `Round: ${round}. It's a Tie! Both chose ${playerChoice}. Choose again!`;
+    } else {
         computerScore++;
-       
-    } else if (hc === "paper" && cc === "scissors") {
-        roundResultsText = `Player Chose: ${hc} || Computer Chose: ${cc}`;
-        roundWinnerText = "Computer chooses Scissors - Computer wins!";
-        computerScore++;
-        
-    } else if (hc === "rock" && cc === "paper") {
-        roundResultsText = `Player Chose: ${hc} || Computer Chose: ${cc}`;
-        roundWinnerText = "Computer chooses paper - Computer wins!";
-        computerScore++;
-        
-    } else if (hc === "rock" && cc === "rock") { // its a tie
-        roundResultsText = `Player Chose: ${hc} || Computer Chose: ${cc}`;
-        roundWinnerText = "It's a tie - choose again!";
-        
-    } else if (hc === "paper" && cc === "paper") {
-        roundResultsText = `Player Chose: ${hc} || Computer Chose: ${cc}`;
-        roundWinnerText = "It's a tie - choose again!";
-        
-    } else if (hc === "scissors" && cc === "scissors") {
-        roundResultsText = `Player Chose: ${hc} || Computer Chose: ${cc}`;
-        roundWinnerText = "It's a tie - choose again!";
-       
+        return `Round: ${round}. Computer wins! ${computerChoice} beats ${playerChoice}`; 
+    };
+}
+
+// play full game - console only
+
+function playGame (playerChoice) {
+    console.log(playRound(playerChoice));
+    console.log(`Player score: ${playerScore} Computer Score: ${computerScore}`);
+    round++;
+
+    if (playerScore === 5 || computerScore === 5) {
+        console.log(`${playerScore === 5 ? "Player" : "Computer"} has won the game!`)
     }
+}
+
+// reset game after 5
+
+function resetGame (){
+    playerScore = 0;
+    computerScore = 0;
+    round = 1;
+    // hide/show DOM elements
 }
 
 // RPS-UI update - grab variables from buttons
@@ -81,105 +68,20 @@ const rockBtn = document.getElementById('rock');
 const paperBtn = document.getElementById('paper');
 const scissorsBtn = document.getElementById('scissors');
 
-// display current round 
-const currentRound = document.getElementById('current-round');
-const currentResult = document.createElement('p'); 
-currentRound.appendChild(currentResult);
-const currentResultText = document.createTextNode(roundResultsText);
-currentResult.appendChild(currentResultText);
+const resetBtn = document.getElementById('reset');
 
-// display current round winner
-const currentWinnerDiv = document.getElementById('current-winner');
-const roundWinner = document.createElement('p');
-currentWinnerDiv.appendChild(roundWinner);
-const currentWinnerText = document.createTextNode(roundWinnerText);
-roundWinner.appendChild(currentWinnerText);
 
-// display current round and score
-const currentScore = document.getElementById('current-score');
-const scores = document.createElement('p');
-currentScore.appendChild(scores);
-const currentScoreText = document.createTextNode(scoreResultsText);
-scores.appendChild(currentScoreText);
-
-const finalResults = document.getElementById('final-results');
-
-// play round with player choice from button clicks
-
-function playGameBtn(playerChoice) {
-    const humanSelection = playerChoice;
-    const computerSelection = getComputerChoice();
-
-    playRound(humanSelection, computerSelection);
-    scoreResultsText = `Round ${round} Score is - Computer: ${computerScore} Player: ${humanScore}`;
-
-    currentRound.style.display = 'block';
-    currentScore.style.display = 'block';
-    currentWinnerDiv.style.display = 'block'; 
-
-    currentResult.innerText = roundResultsText;
-    roundWinner.innerText = roundWinnerText;
-    scores.innerText = scoreResultsText;
-    
-    round++;
-
-    scoreCheck();
-}
-
-// score check and reset functionality
-
-function scoreCheck() {
-    if (humanScore === 5 || computerScore === 5) {
-        const finalScore = document.createElement('p');
-        const finalScoreText = `Final Score is - Computer: ${computerScore} Player: ${humanScore}`;
-        finalScore.appendChild(document.createTextNode(finalScoreText));
-        finalResults.appendChild(finalScore);  
-        round = 0;
-        if (humanScore === 5) {
-            const bigWinner = document.createElement('p');
-            const bigWinnerText = "You won!"
-            bigWinner.appendChild(document.createTextNode(bigWinnerText));
-            finalScore.appendChild(bigWinner);
-            finalResults.style.display = 'block';
-        } else {
-            const bigLoser = document.createElement('p');
-            const bigLoserText = "You won!"
-            bigLoser.appendChild(document.createTextNode(bigLoserText));
-            finalScore.appendChild(bigLoser);
-            finalResults.style.display = 'block'; 
-        }
-    } else {
-        return;
-    }
-    
-}
-
+resetBtn.addEventListener ('click', resetGame);
 
 rockBtn.addEventListener('click', e => {
-    playGameBtn('rock');
+    playGame('Rock');
 });
 
 paperBtn.addEventListener('click', e => {
-    playGameBtn('paper');
+    playGame('Paper');
 } );
 
 scissorsBtn.addEventListener('click', e => {
-    playGameBtn('scissors');
+    playGame('Scissors');
 });
 
-
-
-// Play auto 5-round game
-
-// function playGame () {
-//     for (let i = 0; i < 5; i++) {
-//         const computerSelection = getComputerChoice();
-//         const humanSelection = getPlayerChoice();
-//         console.log(`Round: ${i + 1}`);
-//         playRound(humanSelection, computerSelection);
-//     }
-    
-//     return console.log(`Final score: Computer: ${computerScore} -- Player: ${humanScore}`);
-// }
-
-// playGame();
