@@ -70,6 +70,10 @@ body {
     /* padding-bottom: 5px; */
 }
 
+#results-msg {
+    padding-bottom: 10px;
+}
+
 .btn {
     background-color: black;
     color: white;
