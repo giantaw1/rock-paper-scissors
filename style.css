@@ -16,7 +16,6 @@ body {
 #main-header {
     background-color: rgb(46, 46, 61);
     color: white;
-    /* padding: 30px; */
     margin: 0px;
     margin-bottom: 10px;
     display: flex;
@@ -34,21 +33,39 @@ body {
     margin: 30px;
     border: solid .5px;
     display: flex;
+    justify-content: center;
     align-items: center;
     justify-content: space-around;
 }
 
-#reset {
-    display: none;
+.play-buttons { 
+    flex-direction: column;
+    display: flex;
 }
 
-p {
-    padding-left: 15px;
-    font-weight: bold;
+.button-group {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
+
+#reset {
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .results-container {
     display: none;
+    text-align: center;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#winner-msg {
+    padding-top: 10px;
 }
 
 .btn {
@@ -56,6 +73,15 @@ p {
     color: white;
     padding: 6px;
     border-radius: 4px;
+    margin: 20px;
+}
+
+.btn:hover {
+    background-color: rgb(100, 104, 126);
+}
+
+.btn:active {
+    scale: 1.10;
 }
 
 #footer {

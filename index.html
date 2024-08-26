@@ -13,13 +13,15 @@
     <main class="game">
         <div class="play-buttons card">
             <h2>Choose an option:</h2>
-            <button class="btn" id="rock">Play Rock!</button>
-            <button class="btn" id="paper">Play Paper!</button>
-            <button class="btn" id="scissors">Play Scissors!</button>
+            <div class="button-group">
+                <button class="btn" id="rock">Play Rock!</button>
+                <button class="btn" id="paper">Play Paper!</button>
+                <button class="btn" id="scissors">Play Scissors!</button>
+            </div>    
         </div>
         <div class="current-round card">
-            <strong>Round: <span class="round" id="round">1 </span></strong>
             <strong>Player Score: <span class="score" id="player-score">0 </span></strong>
+            <strong>Round: <span class="round" id="round">1 </span></strong>
             <strong>Computer Score: <span class="score" id="computer-score">0 </span></strong>
         </div>
         <div class="results-container card">

@@ -30,12 +30,12 @@ function playRound(playerChoice) {
 
     if (hasPlayerWon(playerChoice, computerChoice)) {
         playerScore++;
-        return  `Player wins!  ${playerChoice} beats ${computerChoice}`; 
+        return  `Player wins! - ${playerChoice} beats ${computerChoice}`; 
     } else if (computerChoice === playerChoice) {
-        return `It's a Tie!  Both chose ${playerChoice}.  Choose again!`;
+        return `It's a Tie! - Both chose ${playerChoice}.  Choose again!`;
     } else {
         computerScore++;
-        return `Computer wins!  ${computerChoice} beats ${playerChoice}`; 
+        return `Computer wins! - ${computerChoice} beats ${playerChoice}`; 
     };
 }
 
@@ -43,17 +43,20 @@ function playRound(playerChoice) {
 
 function playGame(playerChoice) {
     //create dom elements
-    resultsContainer.style.display = 'block';
-    roundResultsMsg.innerText = playRound(playerChoice);
-    playerScoreSpan.innerText = playerScore;
-    computerScoreSpan.innerText = computerScore;
-    currentRoundSpan.innerText = round;
+    resultsContainer.style.display = 'flex';
+    
+    roundResultsMsg.textContent = playRound(playerChoice);
+    playerScoreSpan.textContent = playerScore;
+    computerScoreSpan.textContent = computerScore;
+    currentRoundSpan.textContent = round;
    
     round++;
 
     if (playerScore === 5 || computerScore === 5) {
-        winnerMsg.innerText = `${playerScore === 5 ? "Player" : "Computer"} has won the game!`;
+        winnerMsg.textContent = `${playerScore === 5 ? "Player" : "Computer"} has won the game!`;
+        // show reset btn
         resetBtn.style.display = 'block';
+        // hide rcp buttons
         playButtonsContainer.style.display = 'none';
     }
 }
@@ -65,14 +68,14 @@ function resetGame() {
     computerScore = 0;
     round = 1;
     // hide/show DOM elements
-    playerScoreSpan.innerText = playerScore;
-    computerScoreSpan.innerText = computerScore;
-    currentRoundSpan.innerText = round;
+    playerScoreSpan.textContent = playerScore;
+    computerScoreSpan.textContent = computerScore;
+    currentRoundSpan.textContent = round;
     resetBtn.style.display = 'none';
     playButtonsContainer.style.display = 'flex';
     resultsContainer.style.display = 'none';
-    roundResultsMsg.innerText = '';
-    winnerMsg.innerText = '';
+    roundResultsMsg.textContent = '';
+    winnerMsg.textContent = '';
 }
 
 // RPS-UI UPDATE //
@@ -91,8 +94,6 @@ const resultsContainer = document.querySelector('.results-container');
 const roundResultsMsg = document.getElementById('results-msg');
 const winnerMsg = document.getElementById('winner-msg');
 const playButtonsContainer = document.querySelector('.play-buttons');
-
-
 
 //  button functionality
 resetBtn.addEventListener ('click', resetGame);
