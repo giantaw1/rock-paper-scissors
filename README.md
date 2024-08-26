@@ -45,8 +45,4 @@ choice div and results div are hidden on launch >>> change display then add .car
 
 // >>> TO DO <<< //
 
-FINAL STYLING - add footer, colors, icons?, layout
-
-WINNER MESSAGE AND RESET/PLAY AGAIN, link to github
-
-git branching and merging practice --
+further styling?
